@@ -1,4 +1,3 @@
-current_char = ""
 accepted = True
 ex_accepted_char = []
 

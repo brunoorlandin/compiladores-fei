@@ -1,5 +1,3 @@
-current_char = ""
-current_state = "q0"
 ex_accepted_char = ["0", "1", "0"]
 accepted = True
 
