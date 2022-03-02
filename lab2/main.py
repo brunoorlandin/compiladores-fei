@@ -1,44 +1,43 @@
 current_index = 0
 current_state = "q0"
 
-def filter_word(ex_accepted_char, word):
+def filter_word(word):
 
-  accepted = False
+  words_accepted = ["if", "else", "then", "for"]
 
-  if word != "":
-    for i in range(len(ex_accepted_char)):
-      if word[i] != ex_accepted_char[i]:
-        accepted = False
-      else:
-        accepted= True
+  file = open("palavras_aceitas.txt", "a")
+
+  for i in range(len(words_accepted)):
+    if word == words_accepted[i]:
+      print("palavra %s aceita" %word)
+      file.write(word)
+      file.write("\n")
+
+  file.close()
     
-  return accepted
 
 def main():
 
   words = []
   words_split = []
 
-  words_accepted = [["i", "f"], ["f", "o", "r"], ["e", "l", "s", "e"], ["t", "h", "e", "n"]]
+  file_words_accepted = open("palavras_aceitas.txt", "w")
+
+  file_words_accepted.close()
   
   file = open("palavras.txt", "r")
 
   words.append(file.readlines())
 
+  file.close()
+
   for i in range(len(words)):
     for j in range(len(words[i])):
         words_split.append(words[i][j].strip().split(" "))
 
-  print(words_split)
-
   for i in range(len(words_split)):
-      for j in range(len(words_split[i])):
-        accepted = filter_word(words_accepted[i],words_split[i][j])
-
-        if accepted == True:
-            print("palavra %s aceita" %words_split[i][j])
-
-        accepted = False
+    for j in range(len(words_split[i])):
+      filter_word(words_split[i][j])
 
 if __name__ == "__main__":
   main()
