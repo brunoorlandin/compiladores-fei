@@ -1,29 +1,26 @@
 current_index = 0
 current_state = "q0"
 
+def token(word):
+  type = word.upper()
+
+  token = (type, word)
+
+  return token
+
 def filter_word(word):
 
   words_accepted = ["if", "else", "then", "for"]
 
-  file = open("palavras_aceitas.txt", "a")
-
   for i in range(len(words_accepted)):
     if word == words_accepted[i]:
-      print("palavra %s aceita" %word)
-      file.write(word)
-      file.write("\n")
-
-  file.close()
+      token_afd = token(word)
+      print(token_afd)
     
-
 def main():
 
   words = []
   words_split = []
-
-  file_words_accepted = open("palavras_aceitas.txt", "w")
-
-  file_words_accepted.close()
   
   file = open("palavras.txt", "r")
 
